@@ -1,0 +1,13 @@
+using System;
+using Microsoft.AspNetCore.Identity;
+
+namespace CovidOut.Models {
+    public class Visit {
+        public Guid Id { get; set; }
+        public Venue Venue {get;set;}
+        public IdentityUser User {get;set;}
+        public DateTime CheckIn {get;set;}
+        public DateTime CheckOut {get;set;}
+        public string UserComments {get;set;}
+    }
+}
