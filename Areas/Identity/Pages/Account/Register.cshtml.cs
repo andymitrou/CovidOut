@@ -62,6 +62,17 @@ namespace CovidOut.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
+            [Required]
+            [Display(Name="First Name")]
+            public string FirstName { get; set; }
+            
+            [Required]
+            [Display(Name="Last Name")]
+            public string LastName { get; set; }
+
+           [Display(Name="Title")]
+            public string Title { get; set; }
+
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -76,7 +87,7 @@ namespace CovidOut.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName, Title = Input.Title };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

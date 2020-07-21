@@ -37,7 +37,9 @@ namespace CovidOut
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders()
                 .AddDefaultUI();
+                
             
             services.AddControllersWithViews();
             services.AddRazorPages();
