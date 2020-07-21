@@ -14,7 +14,7 @@ namespace CovidOut.Controllers
 {
     public class VenueVisitController : BaseController
     {
-        public VenueVisitController(ILogger<VenueVisitController> logger, UserManager<IdentityUser> userManager) : 
+        public VenueVisitController(ILogger<VenueVisitController> logger, UserManager<ApplicationUser> userManager) : 
             base(logger, userManager)
         {
         }

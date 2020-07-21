@@ -12,7 +12,7 @@ namespace CovidOut.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController(ILogger<HomeController> logger, UserManager<IdentityUser> userManager) : 
+        public HomeController(ILogger<HomeController> logger, UserManager<ApplicationUser> userManager) : 
             base(logger, userManager)
         {
         }

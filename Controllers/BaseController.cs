@@ -13,13 +13,13 @@ namespace CovidOut.Controllers
  public abstract class BaseController : Controller
     {   
         protected readonly ILogger<BaseController> _logger;
-        protected readonly UserManager<IdentityUser>  _userManager;
+        protected readonly UserManager<ApplicationUser>  _userManager;
 
-        public BaseController(ILogger<BaseController> logger, UserManager<IdentityUser> userManager){
+        public BaseController(ILogger<BaseController> logger, UserManager<ApplicationUser> userManager){
             _logger = logger; 
             _userManager = userManager;
         }
 
-        protected async Task<IdentityUser> GetUserIdAsync() => await _userManager.GetUserAsync(this.User);
+        protected async Task<ApplicationUser> GetUserIdAsync() => await _userManager.GetUserAsync(this.User);
     }
 }

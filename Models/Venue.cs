@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace CovidOut.Models {
     public class Venue {
@@ -8,5 +9,10 @@ namespace CovidOut.Models {
         public string City { get; set; }
         public string Email { get; set; }
         public string Telephone { get; set; } 
+        public int Capacity {get;set;}
+        public TimeSpan TimeOpens {get;set;}
+        public TimeSpan TimeCloses {get;set;}
+        public string Logo {get;set;}
+        public string OwnerUserId {get;set;}
     }
 }
