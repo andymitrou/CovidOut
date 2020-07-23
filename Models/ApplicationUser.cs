@@ -8,5 +8,7 @@ namespace CovidOut.Models {
  
     [PersonalData]  
     public string LastName { get; set; }
+
+    public bool IsVenueOwner {get;set;}
     }
 }

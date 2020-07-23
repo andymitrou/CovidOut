@@ -73,6 +73,9 @@ namespace CovidOut.Areas.Identity.Pages.Account
            [Display(Name="Title")]
             public string Title { get; set; }
 
+            [Display(Name="Do you own a venue?")]
+            public bool IsVenueOwner { get; set; }
+
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -87,11 +90,17 @@ namespace CovidOut.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName, Title = Input.Title };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName, Title = Input.Title, IsVenueOwner = Input.IsVenueOwner };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    string role = Input.IsVenueOwner ? "VenueOwner" : "Visitor" ;
+                    var roleResult = await _userManager.AddToRoleAsync(user, role);  
+                     
+                    if (roleResult.Succeeded)
+                        _logger.LogInformation("Role assigned");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
