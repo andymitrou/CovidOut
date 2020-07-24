@@ -7,9 +7,9 @@ using Microsoft.Extensions.Logging;
 namespace CovidOut.ServiceLayer {
     public class VenueService {
 
-        private readonly GenericRepository<Venue> _venueRepository;
+        private readonly IGenericRepository<Venue> _venueRepository;
         private readonly ILogger<VenueService> _logger;
-        public VenueService(GenericRepository<Venue> venueRepository, ILogger<VenueService> logger){
+        public VenueService(IGenericRepository<Venue> venueRepository, ILogger<VenueService> logger){
             this._venueRepository = venueRepository;
             this._logger = logger;
         }   
